@@ -1,0 +1,48 @@
+create table Account (
+ACCOUNT_NUMBER INTEGER auto_increment PRIMARY KEY,
+FIRST_NAME  varchar(30) NOT NULL,
+LAST_NAME   varchar(30) NOT NULL,
+STREET      varchar(50) NOT NULL,
+CITY        varchar(15) NOT NULL,
+STATE       varchar(2) NOT NULL,
+ZIP         varchar(5) NOT NULL,
+phone       varchar(12) NOT NULL,
+email       varchar(30) NOT NULL,
+username    varchar(30) NOT NULL,
+password    varchar(30) NOT NULL
+)
+;
+create table Book (
+ISBN        varchar(13) PRIMARY KEY,
+TITLE       varchar(100) NOT NULL,
+AUTHOR      varchar(50) NOT NULL,
+DESCRIPTION varchar(1000) NOT NULL,
+YEAR        INT NOT NULL,
+PAGE        INT NOT NULL,
+PRICE       real NOT NULL,
+QUANTITY    INT NOT NULL
+)
+;
+create table Status(
+STATUS varchar(10) PRIMARY KEY
+)
+;
+create table Orders (
+ORDER_NUMBER INT auto_increment PRIMARY KEY,
+ACCOUNT_NUMBER INTEGER NOT NULL,
+ORDER_TIME   TIMESTAMP  NOT NULL , 
+TOTAL_PRICE  real  NOT NULL,
+STATUS       varchar  NOT NULL,
+foreign key (ACCOUNT_NUMBER) references Account(ACCOUNT_NUMBER),
+foreign key (STATUS) references Status(STATUS)
+)
+;
+create table Order_Detail (
+ITEM_KEY       INT auto_increment PRIMARY KEY,
+ORDER_NUMBER    INT  NOT NULL,
+ISBN           varchar  NOT NULL,
+QUANTITY       INT  NOT NULL,
+foreign key (ORDER_NUMBER) references Orders(ORDER_NUMBER),
+foreign key (ISBN) references Book(ISBN)
+)
+;

@@ -1,0 +1,5 @@
+INSERT INTO Status (STATUS) VALUES  ('Cart');
+INSERT INTO Status (STATUS) VALUES  ('Processing');
+INSERT INTO Status (STATUS) VALUES  ('Shipped');
+INSERT INTO Status (STATUS) VALUES  ('Cancelled');
+INSERT INTO Status (STATUS) VALUES  ('Pending');
